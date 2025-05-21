@@ -1,0 +1,14 @@
+# Rediriger toutes les requêtes vers public/index.php
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /ActuEsp/
+    
+    # Ne pas rediriger les fichiers et dossiers existants
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Rediriger tout le reste vers index.php
+    RewriteRule ^(.*)$ public/index.php [QSA,L]
+</IfModule>
+
+

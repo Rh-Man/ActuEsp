@@ -1,6 +1,5 @@
 <?php
-// models/Category.php
-require_once 'config.php';
+require_once BASE_PATH . '/config/database.php';
 
 class Category {
     private $pdo;

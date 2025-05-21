@@ -1,5 +1,5 @@
 <?php
-// config.php - Configuration de la base de données
+// Configuration de la base de données
 define('DB_HOST', 'localhost');
 define('DB_NAME', 'mglsi_news');
 define('DB_USER', 'mglsi_user');
