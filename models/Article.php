@@ -1,5 +1,4 @@
 <?php
-// models/Article.php
 require_once 'config.php';
 
 class Article {
@@ -9,9 +8,7 @@ class Article {
         $this->pdo = getConnection();
     }
     
-    /**
-     * Récupère tous les articles avec leur catégorie
-     */
+   
     public function getAllArticles() {
         $sql = "SELECT a.*, c.libelle as categorie_libelle 
                 FROM Article a 
@@ -22,9 +19,7 @@ class Article {
         return $stmt->fetchAll();
     }
     
-    /**
-     * Récupère les articles d'une catégorie spécifique
-     */
+
     public function getArticlesByCategory($categoryId) {
         $sql = "SELECT a.*, c.libelle as categorie_libelle 
                 FROM Article a 
@@ -37,9 +32,7 @@ class Article {
         return $stmt->fetchAll();
     }
     
-    /**
-     * Récupère un article par son ID
-     */
+   
     public function getArticleById($articleId) {
         $sql = "SELECT a.*, c.libelle as categorie_libelle 
                 FROM Article a 
@@ -51,9 +44,7 @@ class Article {
         return $stmt->fetch();
     }
     
-    /**
-     * Ajoute un nouvel article
-     */
+  
     public function addArticle($titre, $contenu, $categorieId) {
         $sql = "INSERT INTO Article (titre, contenu, categorie) 
                 VALUES (:titre, :contenu, :categorie)";
@@ -68,9 +59,7 @@ class Article {
         return $this->pdo->lastInsertId();
     }
     
-    /**
-     * Met à jour un article existant
-     */
+  
     public function updateArticle($id, $titre, $contenu, $categorieId) {
         $sql = "UPDATE Article 
                 SET titre = :titre, 
@@ -88,9 +77,7 @@ class Article {
         ]);
     }
     
-    /**
-     * Supprime un article
-     */
+ 
     public function deleteArticle($id) {
         $sql = "DELETE FROM Article WHERE id = :id";
         $stmt = $this->pdo->prepare($sql);

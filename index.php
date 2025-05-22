@@ -1,23 +1,18 @@
 <?php
-// index.php - Point d'entrée principal de l'application
 require_once 'models/Article.php';
 require_once 'models/Category.php';
 
-// Initialisation des modèles
 $articleModel = new Article();
 $categoryModel = new Category();
 
-// Récupération de la catégorie sélectionnée (si présente)
 $selectedCategoryId = isset($_GET['category']) ? (int)$_GET['category'] : null;
 
-// Récupération des articles selon la catégorie sélectionnée
 if ($selectedCategoryId) {
     $articles = $articleModel->getArticlesByCategory($selectedCategoryId);
 } else {
     $articles = $articleModel->getAllArticles();
 }
 
-// Récupération de toutes les catégories
 $categories = $categoryModel->getAllCategories();
 ?>
 

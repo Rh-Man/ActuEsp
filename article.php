@@ -1,24 +1,19 @@
 <?php
-// article.php - Page de détail d'un article
 require_once 'models/Article.php';
 require_once 'models/Category.php';
 
 $articleModel = new Article();
 $categoryModel = new Category();
 
-// Récupération de l'ID de l'article
 $articleId = isset($_GET['id']) ? (int)$_GET['id'] : 0;
 
-// Récupération de l'article
 $article = $articleModel->getArticleById($articleId);
 
-// Redirection si l'article n'existe pas
 if (!$article) {
     header("Location: index.php");
     exit;
 }
 
-// Récupération de toutes les catégories pour le menu
 $categories = $categoryModel->getAllCategories();
 ?>
 
